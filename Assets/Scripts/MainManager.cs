@@ -70,7 +70,18 @@ public class MainManager : MonoBehaviour
 
     public void GameOver()
     {
+        if(MenuManager.instance !=null)
+		{
+            MenuManager.instance.score = m_Points;
+        }
+
         m_GameOver = true;
         GameOverText.SetActive(true);
     }
+
+
+    public void BackToTheMenu()
+	{
+        SceneManager.LoadScene(0);
+	}
 }
