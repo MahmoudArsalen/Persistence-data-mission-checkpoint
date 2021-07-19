@@ -36,6 +36,10 @@ public class UiHandler : MonoBehaviour
 
 	public void QuitGame()
 	{
+		if(MenuManager.instance != null)
+		{
+			MenuManager.instance.SavePlayerInfo();
+		}
 #if UNITY_EDITOR
 		EditorApplication.ExitPlaymode();
 #else
