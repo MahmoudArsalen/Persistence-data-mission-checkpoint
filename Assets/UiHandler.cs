@@ -15,6 +15,10 @@ public class UiHandler : MonoBehaviour
 
 	private void Start()
 	{
+		if(!string.IsNullOrEmpty(MenuManager.instance.playerName))
+		{
+			enterName.text = MenuManager.instance.playerName;
+		}
 		
 			MenuManager.instance.UpdatingUiBestScore(bestScoreText);
 	}
