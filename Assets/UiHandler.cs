@@ -11,15 +11,26 @@ using UnityEditor;
 public class UiHandler : MonoBehaviour
 {
 	public Text bestScoreText;
+	public InputField enterName;
 
 	private void Start()
 	{
-		UpdatingUiBestScore();
+		
+			MenuManager.instance.UpdatingUiBestScore(bestScoreText);
 	}
 
 
 	public void StartGame()
 	{
+		if(MenuManager.instance != null )
+		{
+			if(!string.IsNullOrEmpty(enterName.text))
+			{
+				MenuManager.instance.score = 0;
+				MenuManager.instance.playerName = enterName.text;
+			}
+			
+		}
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 
@@ -33,9 +44,5 @@ public class UiHandler : MonoBehaviour
 
 	}
 
-	public void UpdatingUiBestScore()
-	{
-		
-		bestScoreText.text = "Best Score: " + MenuManager.instance.score;
-	}
+	
 }
